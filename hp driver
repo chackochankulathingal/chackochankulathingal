@@ -1,0 +1,13 @@
+sudo apt remove bcmwl-kernel-source && sudo apt install git dkms
+git clone -b extended https://github.com/lwfinger/rtlwifi_new.git
+sudo dkms add ./rtlwifi_new
+sudo dkms install rtlwifi-new/0.6
+
+Reboot
+
+If you notice weak signal try
+sudo modprobe -r rtl8723de && sleep 5 && sudo modprobe rtl8723de ant_sel=1
+
+
+and see if it is better, if not do
+sudo modprobe -r rtl8723de && sleep 5 && sudo modprobe rtl8723de ant_sel=2
